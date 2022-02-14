@@ -27,6 +27,7 @@ void reverseString2(const char *str){
 /* In place methode */
 void reverseString3(char *c, int size)
 {
+    
     // size= strlen(c);
     for(int i=0; i<=((size-2)/2);i++)
     {
