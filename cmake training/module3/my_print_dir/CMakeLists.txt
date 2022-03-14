@@ -1,2 +1,4 @@
 add_library(my_print
-print_val.cpp)
+src/print_val.cpp)
+
+target_include_directories(my_print PUBLIC include)
