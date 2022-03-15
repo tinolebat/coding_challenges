@@ -1,7 +1,7 @@
 #include <iostream>
-#include "add.h"
-#include "div.h"
-#include "print_val.h"
+#include "my_math/add.h"
+#include "my_math/div.h"
+#include "my_print/print_val.h"
 
 using namespace std;
 
