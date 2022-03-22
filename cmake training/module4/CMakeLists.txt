@@ -100,3 +100,11 @@ message( "sub_list: ${sub_list}" )
 message( "sub_list2: ${sub_list2}" )
 message( "str_list: ${str_list}" )
 message( "find_var: ${find_var}" )
+
+#-------------------------------------------------------------------------------------------
+#                  String command- string() : Please check CMAKE website
+# list(<subcommand> <name of list> ... ... ... <return_variable>)
+# subcommands: APPEND, FIND, REPLACE, PREPEND,TOLOWER, TOUPPER, COMPARE EQUAL
+# 
+# File() commands : Please check CMAKE website
+#-------------------------------------------------------------------------------------------
