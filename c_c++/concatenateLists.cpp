@@ -3,13 +3,12 @@
 
 using namespace std;
 
-struct Node
-{
+struct Node {
     int data;
-    Node *next;    
+    Node *next;
 };
 
-class Linkedlist{
+class Linkedlist {
 private:
     Node *head, *tail;
 public:
@@ -56,7 +55,6 @@ public:
         for(int i=0;i <pos; i++){
             cur = cur->next;
         }
-
         tmp->next = cur->next;
         cur->next = tmp;
     }
@@ -107,25 +105,23 @@ public:
 
 };
 
+void concatenate( struct Node *h1, struct Node *h2){
+    
+
+}
+
 int main()
 {
-    Linkedlist a;
+    Linkedlist a,b;
     a.AddAtTail(1);
     a.AddAtTail(2);
     a.AddAtTail(3);
-    a.AddAtTail(4);
-    a.AddAtTail(5);
-    a.AddAtTail(6);
     a.display();
-    a.remove_rand(2);
-    a.display();
-    a.AddAtHead(0);
-    a.display();
-    a.removeAtTail();
-    a.display();
-    a.randAdd(99, 3);
-    a.display();
-    a.removeAtHead();
-    a.display();
+
+    b.AddAtTail(7);
+    b.AddAtTail(8);
+    b.AddAtTail(9);
+    b.display();
+
 
 }
