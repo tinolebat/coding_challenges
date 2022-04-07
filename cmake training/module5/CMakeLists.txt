@@ -129,8 +129,18 @@ cmake_minimum_required(VERSION 3.0.0)
 # message("Outside function: After function call: ${Name}")
 
 # **case2: Subdirectories scope
-set(Name Mike)
+# set(Name Mike)
 
-message("Root Directory: Before adding subdirectory: ${Name}")
-add_subdirectory(demo_subdirectory_scope)
-message("Root Directory: After adding subdirectory: ${Name}")
+# message("Root Directory: Before adding subdirectory: ${Name}")
+# add_subdirectory(demo_subdirectory_scope)
+# message("Root Directory: After adding subdirectory: ${Name}")
+
+# -------------------------------------- MACROS----------------------------------
+# Macro don't introduce scope. 
+# Function names and Macro name are Case INSENSITIVE
+macro(printing Var)
+    message("My name is ${Var}")
+    set(Var Life)
+    message("My name is ${Var}")
+endmacro()
+printing(Mike) # All the data fencing in the function will be replaced by the argument 
