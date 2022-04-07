@@ -113,16 +113,24 @@ cmake_minimum_required(VERSION 3.0.0)
 # print_detail(VAR Bob Alice Mark) #Here Bob is an optional argument; output is the same as above. 
 
 
-# -------------------------------------- SCOPES----------------------------------
+# -------------------------------------- SCOPES (including directory scope)----------------------------------
 
-set(Name James)                     # 1 name variable is created: PARENT SCOPE
-function(print_detail)
-    message("Inside function: Before modif.: ${Name}")
-    set(Name Bob PARENT_SCOPE)      # the 2nd name variable is created inside the Fucntion SCOPES so we have 2 Name var. (onl;y the 2nd Name is modified inside the funtion)
-                                    # The prop. PARENT_SCOPE makes the 1st Name variable in the PARENT SCOPE accessible 
-    message("Inside function: After modif.: ${Name}")
-endfunction()
+# **case1
+# set(Name James)                     # 1 name variable is created: PARENT SCOPE
+# function(print_detail)
+#     message("Inside function: Before modif.: ${Name}")
+#     set(Name Bob PARENT_SCOPE)      # the 2nd name variable is created inside the Fucntion SCOPES so we have 2 Name var. (onl;y the 2nd Name is modified inside the funtion)
+#                                     # The prop. PARENT_SCOPE makes the 1st Name variable in the PARENT SCOPE accessible 
+#     message("Inside function: After modif.: ${Name}")
+# endfunction()
 
-message("Outside function: Before function call: ${Name}")
-print_detail()
-message("Outside function: After function call: ${Name}")
+# message("Outside function: Before function call: ${Name}")
+# print_detail()
+# message("Outside function: After function call: ${Name}")
+
+# **case2: Subdirectories scope
+set(Name Mike)
+
+message("Root Directory: Before adding subdirectory: ${Name}")
+add_subdirectory(demo_subdirectory_scope)
+message("Root Directory: After adding subdirectory: ${Name}")
