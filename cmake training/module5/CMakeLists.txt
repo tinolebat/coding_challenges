@@ -84,30 +84,45 @@ cmake_minimum_required(VERSION 3.0.0)
 
 # **case3: Optional arguments (Special arguments: ARGC, ARGN, ARGVO, ...)
 
-function(print_detail nameVar) 
-    message("My name is ${${nameVar}}")
-    if(DEFINED ARGV1) # To print the optional argument, print Special argument ARGV1
-        message("[With Optional Argument] My Name is ${ARGV1}")
-    endif()
+# function(print_detail nameVar) 
+#     message("My name is ${${nameVar}}")
+#     if(DEFINED ARGV1) # To print the optional argument, print Special argument ARGV1
+#         message("[With Optional Argument] My Name is ${ARGV1}")
+#     endif()
 
-    message("ARGC = ${ARGC}")
-    message("ARGV = ${ARGV}")
-    message("ARGN = ${ARGN}")
+#     message("ARGC = ${ARGC}")
+#     message("ARGV = ${ARGV}")
+#     message("ARGN = ${ARGN}")
 
-    if(DEFINED ARGV0) # TO print the optional argument, print Special argument ARGV1
-        message("[With Optional Argument] My Name is ${ARGV0}")
-    endif()
-    if(DEFINED ARGV1) # TO print the optional argument, print Special argument ARGV1
-        message("[With Optional Argument] My Name is ${ARGV1}")
-    endif()
-    if(DEFINED ARGV2) # TO print the optional argument, print Special argument ARGV1
-        message("[With Optional Argument] My Name is ${ARGV2}")
-    endif()
-    if(DEFINED ARGV3) # TO print the optional argument, print Special argument ARGV1
-        message("[With Optional Argument] My Name is ${ARGV3}")
-    endif()
+#     if(DEFINED ARGV0) # TO print the optional argument, print Special argument ARGV1
+#         message("[With Optional Argument] My Name is ${ARGV0}")
+#     endif()
+#     if(DEFINED ARGV1) # TO print the optional argument, print Special argument ARGV1
+#         message("[With Optional Argument] My Name is ${ARGV1}")
+#     endif()
+#     if(DEFINED ARGV2) # TO print the optional argument, print Special argument ARGV1
+#         message("[With Optional Argument] My Name is ${ARGV2}")
+#     endif()
+#     if(DEFINED ARGV3) # TO print the optional argument, print Special argument ARGV1
+#         message("[With Optional Argument] My Name is ${ARGV3}")
+#     endif()
 
+# endfunction()
+
+# set(VAR John)
+# print_detail(VAR Bob Alice Mark) #Here Bob is an optional argument; output is the same as above. 
+
+
+# -------------------------------------- SCOPES----------------------------------
+
+set(Name James)                     # 1 name variable is created: PARENT SCOPE
+function(print_detail)
+    message("Inside function: Before modif.: ${Name}")
+    set(Name Bob PARENT_SCOPE)      # the 2nd name variable is created inside the Fucntion SCOPES so we have 2 Name var. (onl;y the 2nd Name is modified inside the funtion)
+                                    # The prop. PARENT_SCOPE makes the 1st Name variable in the PARENT SCOPE accessible 
+    message("Inside function: After modif.: ${Name}")
 endfunction()
 
-set(VAR John)
-print_detail(VAR Bob Alice Mark) #Here Bob is an optional argument; output is the same as above. 
+message("Outside function: Before function call: ${Name}")
+print_detail()
+message("Outside function: After function call: ${Name}")
