@@ -103,11 +103,31 @@ public:
         cout << "\n";
     }
 
+    Node * gethead(){
+        return head;
+    }
 };
 
-void concatenate( struct Node *h1, struct Node *h2){
-    
+static void concatenate( struct Node *h1, struct Node *h2){
+    if(h1 != NULL && h2 != NULL){
+        if(h1->next == NULL){
+            h1->next = h2;
+        }else {
+            concatenate(h1->next, h2);  
+        } 
+    } else {
+        cout << "One of the head is NULL \n" << endl;
+    }
+}
 
+void display2(Node* h){
+    if(h == NULL){
+        cout << "NULL" << endl;
+
+    } else {
+        cout << h->data << " ";
+        display2(h->next);
+    }
 }
 
 int main()
@@ -122,6 +142,15 @@ int main()
     b.AddAtTail(8);
     b.AddAtTail(9);
     b.display();
+/*
+Use command if concatenate() or display2() are defined inside the LinkedList:
+
+Linkedlist::concatenate(a.gethead(), b.gethead());
+Linkedlist::display2(a.gethead());
+*/
+    concatenate(a.gethead(), b.gethead());
+    cout << "Concatenated List: " << endl;
+    display2(a.gethead());
 
 
 }
