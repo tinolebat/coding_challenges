@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// Implementing queue with Linkedlist using only Struct ADT
+
 /*
 Maintain 2 pointers: front, rear. 
 front points to the 1st item of queue and rear points to the last item.

@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+// Implementing queue with an Array using class
+
 // For implementing queue, we need to keep track of two indices, front and rear
 
 class Queue {

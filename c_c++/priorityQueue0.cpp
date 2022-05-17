@@ -21,7 +21,7 @@ struct item
 };
 
 item pr[MAX];
-int size = -1; // Pointer to the last index
+int size = -1; 
 
 void enqueue(int val, int priority)
 {
@@ -36,7 +36,7 @@ void enqueue(int val, int priority)
 int peek()
 {
     int highestpriority = INT_MIN;
-    int ind = -1;
+    int ind = -1; // Pointer to the last index
 
     // Check for the element with highest priority
     for(int i=0; i <= size; i++)
