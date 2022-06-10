@@ -27,29 +27,39 @@ class Solution
         
             inOrder(root->left);
             v.push_back(root->data);
-            std::cout << root->data << " ";
+            // std::cout << root->data << " ";
 
             inOrder(root->right);
             return v;
+        }
+
+        void display(vector<int> vc)
+        {
+            for(int i=0; i<vc.size(); i++)
+            {
+                std::cout << vc.at(i) << " ";
+            }
+            std::cout << "\n";
         }
 };
 
 int main()
 {
-    Solution s;
     Treenode * root = new Treenode(1);
-    root->left = new Treenode(3);
-    root->right = new Treenode(2);
+    root->left = new Treenode(2);
+    root->right = new Treenode(3);
 
+    root->left->left = new Treenode(4);
+    root->left->right= new Treenode(5);
+
+    root->right->left= new Treenode(6);
+    root->right->right= new Treenode(7);
+
+    Solution s;
     vector<int> res = s.inOrder(root);
 
-    std::cout << " \nPrint result vector \n";
-    for(int i=0; i< res.size(); i++)
-    {
-        std::cout << res.at(i) << " ";
-    }
-    std::cout << "\n";
-
+    std::cout << "\nPrint result vector \n";
+    s.display(res);
 
     return 0;
 }

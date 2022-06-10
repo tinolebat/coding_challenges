@@ -28,19 +28,15 @@ class Solution
                 // Reach the left most Treenode of the cur Node
                 while(cur != NULL)
                 {
-                    std::cout <<"inside loop: "<< cur->data <<" \n" <<std::flush;
+                    // std::cout <<"inside loop: "<< cur->data <<" \n" <<std::flush;
                     s.push(cur);
-                    cur = cur->left;
-                    
+                    cur = cur->left;           
                 }
-                std::cout <<std::flush;
-                // std::cout <<"Outside loop: "<< cur->data<<" \n" << std::flush;
 
                 // cur must be NULL at this point, because it reaches the leaf node
                 cur = s.top();
                 s.pop();
             
-
                 std::cout << cur->data << " ";
 
                 // left subtree is visited completely, now swith to the right subtree
@@ -49,23 +45,43 @@ class Solution
             std::cout << "\n";
         }
 
-        void preOrder(Treenode * root) // root -> left -> right
+        void preOrder(Treenode * root)
         {
-            stack<Treenode *> s;
-            Treenode * cur = root;
+            if(root == NULL) return;
 
-            while (cur !=NULL || s.empty() == false)
+            stack<Treenode* > s;
+            s.push(root);
+            Treenode * cur;
+
+            while(s.empty()==false)
             {
+                cur = s.top();
                 std::cout << cur->data << " ";
-                while (cur != NULL)
-                {
-                    s.push(cur);
-                    cur = cur->left;                    
-                }
+                s.pop();
 
-                
+                // Push right and left children of the popped node to stack
+                if(cur->right) s.push(cur->right);
+
+                if(cur->left) s.push(cur->left);                
             }
-            
+            std::cout << "\n";
+        }
+
+        void postOrder(Treenode * root)
+        {
+            if(root == NULL) return;
+
+            stack<Treenode* > s;
+            Treenode * cur;
+
+            while(s.empty() == false)
+            {
+                s.push(root->right);
+                s.push(root);
+
+                cur = root->left;
+            }
+
         }
 
 };
@@ -84,6 +100,7 @@ int main()
     root->right->right = new Treenode(7);
 
     s.inOrder(root);
+    s.preOrder(root);
 
 
     return 0;
