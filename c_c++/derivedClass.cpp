@@ -37,7 +37,7 @@ int main()
     cout << "Value from base class through derive2 class: "
         << deriv2.b << endl;
 
-    cout << "Value from 1st derived class through derive2 class: "
+    cout << "Value from 1st derived class : "
         << deriv2.b2 << endl;
 
     return 0;
